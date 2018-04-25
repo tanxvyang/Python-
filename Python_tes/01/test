@@ -1,4 +1,74 @@
-print 'hello,worlde!'
+#  长度，最小值，最大值
+#内建函数 len()  min()  max()
+
+
+>>> numbers = [100,30,478]
+
+>>> len(numbers)
+3
+>>> max(numbers)
+478
+>>> min(numbers)
+30
+>>> max(2,3)
+3
+>>> min(2,4,6,3)
+
+
+
+
+#字符串创建列表     list()函数
+
+>>> list('hello')
+['h', 'e', 'l', 'l', 'o']
+# list函数适用于所有类型。而不只是字符串。
+
+
+#基本列表操作
+
+1. 插入元素  a[x]  x表示元素下标
+>>> x = [1,1,1]
+>>> x[1] = 2
+>>> x
+[1, 2, 1]
+
+2.删除元素  del aaa[x]  x表示元素下标
+>>> name = ['erfgag','adgf','dgg','rth','eyjt7','dgrth']
+>>> del name[2]         //
+>>> name
+['erfgag', 'adgf', 'rth', 'eyjt7', 'dgrth']
+>>> len(name)
+5
+
+
+
+
+3.分片赋值
+>>> name = list('perl')
+>>> name
+['p', 'e', 'r', 'l']
+
+>>> name[2:]=list('ar')
+>>> name
+['p', 'e', 'a', 'r']
+
+>>> name[1:]=list('ython') //分片插入
+>>> name
+['p', 'y', 't', 'h', 'o', 'n']
+
+>>> number = [1,5]
+>>> number[1:1]=[2,3,4]
+>>> name
+['p', 'y', 't', 'h', 'o', 'n']
+>>> number
+[1, 2, 3, 4, 5]
+>>> number[1:4]=[]   //删除
+>>> number
+[1, 5]
+
+
+
+
 SyntaxError: Missing parentheses in call to 'print'. Did you mean print('hello,worlde!')?
 >>> print 'h'
 SyntaxError: Missing parentheses in call to 'print'. Did you mean print('h')?
@@ -11,10 +81,10 @@ Traceback (most recent call last):
 NameError: name 'hello' is not defined
 >>> print("hello")
 hello
->>> 
+>>>
 #在Python3中print 需要使用  print（）来表示
 
->>> 
+>>>
 2**3     #x**y   表示x的y次幂
 8
 >>> pow(2,3)  #函数pow（x,y）表示x的y次幂
@@ -37,10 +107,10 @@ hello
 >>> import cmath
 >>> cmath.sqrt(-1)
 1j
->>>     #cmath 模块可以处理负数开方，形成虚数>>> 
+>>>     #cmath 模块可以处理负数开方，形成虚数>>>
 
 （1+3j）*(9+4j)
-SyntaxError: invalid character in identifier 
+SyntaxError: invalid character in identifier
  #错误表示标识符中的无效字符”,检查下有没有字符是中文的,把中文字符改成英文字符再运行
 >>> (1+3j)*(9+4j)
   (-3+31j)
@@ -52,16 +122,16 @@ SyntaxError: invalid character in identifier
 'hello,world'
 >>> "Let's go!"
 "Let's go!"
->>> 'let's go!'        
+>>> 'let's go!'
 SyntaxError: invalid syntax   #出现错误的原因是因为python不知道如何处理后面的‘s
 
 >>> "Let\'s go!"   #使用反斜杠（/）对字符串中的引号进行转义
 "Let's go!"
 
  #拼接字符串
->>> 
->>> 
->>> 
+>>>
+>>>
+>>>
 >>> "Let's say"'"hello world!"
 SyntaxError: EOL while scanning string literal   #错误原因 字符串符号没有成对出现
 >>> "Let's say"'"hello world!"'
@@ -70,11 +140,11 @@ SyntaxError: EOL while scanning string literal   #错误原因 字符串符号�
 
 >>> "hello"+"world!"  #使用类似加法将字符串链接
 'helloworld!'
->>> x="hello"   
+>>> x="hello"
 >>> y="world!"
 >>> x+y
 'helloworld!'
->>> 
+>>>
 
 
 >>> temp = 42
@@ -103,31 +173,31 @@ c:\nwhere
 
 
 #######原生字符串  原生字符串以r 打头  并且不会将反斜线当做特殊字符
->>> print ('c:\nwhere')   
+>>> print ('c:\nwhere')
 c:
 where
 >>> print (r'c:\nwhere')
-	   
+
 c:\nwhere
 
 >>>  print (r'c:\nwhere\')
-	    
+
 SyntaxError: unexpected indent
 >>> print (r'c:\nwhere\')
-	   
+
 SyntaxError: EOL while scanning string literal
 >>> print (r"c:\nwhere\\" )
-	   
+
 c:\nwhere\\
 >>> print (r'c:\nwhere\'')
-	   
+
 c:\nwhere\'
 >>>  print (r'c:\nwhere''\\')
-	   
+
 SyntaxError: unexpected indent
 
 #####原生字符串最后一个字符不能是反斜杠 如果有，则要以如下形式输出
 
 >>> print (r'c:\nwhere''\\')
-	   
+
 c:\nwhere\
