@@ -1,0 +1,16 @@
+{
+    "python.unitTest.pyTestArgs": [
+        "Python_tes"
+    ],
+    "python.unitTest.unittestEnabled": true,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.pyTestEnabled": false,
+    "python.unitTest.unittestArgs": [
+        "-v",
+        "-s",
+        "./src",
+        "-p",
+        "*test.py"
+    ],
+    "python.linting.pylintEnabled": true
+}
