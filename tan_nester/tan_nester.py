@@ -10,7 +10,7 @@ def print_lol(the_list,indext=False,level=0):
 			print_lol(each_item,indext,level)
 		else:
 			if indext:
-
 			   for tab_stop in range(level):
 				   print("\t", end='')
+				   
 			print(each_item)
