@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name   ="tan-nester",
-    version     =  '1.3.0',
+    version     =  '1.4.0',
     py_modules = ['tan_nester'],
     author  ='tanxvyang',
     author_email='1173195180@qq.com',

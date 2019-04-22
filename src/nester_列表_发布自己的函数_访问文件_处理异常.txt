@@ -130,6 +130,10 @@ password: password
 
 -----------------------------------------------
 
+要保证函数名未被使用,而且每次修改之后都要更改setuo.py文档中的版本号version
+并且,python setup.py install 以将发布安装到本地
+
+
         <3.注册
                  python  setup.py sdist   //构建一个发布文件
             

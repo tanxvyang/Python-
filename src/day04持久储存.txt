@@ -1,0 +1,99 @@
+    使用BIF  open(data,file='path')
+    永久保存数据
+    
+    
+    
+    --------------------------------------------------------
+    #优化代码,用finally扩展try
+    '''
+    如果遇到这种情况,也就是不论出现什么错误都必须运行某段代码时,可以向
+    '''
+    --------------------------------------------------------
+    >>> try:
+    	data = open('missing.txt')
+    	print(data.readline(), end='')
+    except IOError:
+    	print('File error')
+    finally:
+    	data.close()
+    
+    	
+    File error
+    Traceback (most recent call last):
+      File "<pyshell#20>", line 7, in <module>
+        data.close()
+    NameError: name 'data' is not defined
+    
+
+
+--------------------------------------------------------
+可以通过给err起名从而输出详细的error信息,方法是 IOError as errname
+
+但是下面这段代码显然出现了异常,
+TypeError: can only concatenate str (not "FileNotFoundError") to str
+这是因为异常对象和字符串类型不相容,所以在尝试把异常对象与字符串连接时会带来问题
+解决方法是使用 str(err) BIF 将异常对象强制装换为字符串
+--------------------------------------------------------
+        >>> try:
+        	data = open('missing.txt')
+        	print(data.readline(), end='')
+        except IOError as err:
+        	print('File error'+err)
+        finally:
+        	data.close()
+        
+        	
+        Traceback (most recent call last):
+          File "<pyshell#22>", line 2, in <module>
+            data = open('missing.txt')
+        FileNotFoundError: [Errno 2] No such file or directory: 'missing.txt'
+        
+        During handling of the above exception, another exception occurred:
+        
+        Traceback (most recent call last):
+          File "<pyshell#22>", line 5, in <module>
+            print('File error'+err)
+        TypeError: can only concatenate str (not "FileNotFoundError") to str
+        
+        During handling of the above exception, another exception occurred:
+        
+        Traceback (most recent call last):
+          File "<pyshell#22>", line 7, in <module>
+            data.close()
+        NameError: name 'data' is not defined
+        
+        
+        --------------------------------------------------------
+        --------------------------------------------------------
+        
+        >>> try:
+        	data = open('missing.txt')
+        	print(data.readline(), end='')
+        except IOError as err:
+        	print('File error'+str(err))
+        finally:
+        	if 'data' in locals():
+        		data.close()
+        
+        		
+        File error[Errno 2] No such file or directory: 'missing.txt'
+        ===================================================================
+
+
+但是所有的这些额外的逻辑都会混淆你代码的正真意图
+    使用 BIF with 简化代码
+
+    美化数据  标准输出  sys.stdout
+
+使用pickle.dump() 保存数据
+         with open("man_data.txt",'wb') as man_file, open('other_data.txt','wb') as other_file:
+       pickle.dump(man, man_file)
+       pickle.dump(other, other_file)
+
+
+使用 pickle.load()恢复数据
+         with open("man_data.txt",'rb') as man_file, open('other_data.txt','rb') as other_file:
+       new_man=pickle.load( man_file)
+       new_other=pickle.load( other_file)
+       tan_nester.print_lol(new_man)
+       tan_nester.print_lol(new_other)
