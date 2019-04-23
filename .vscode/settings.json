@@ -2,7 +2,7 @@
     "python.unitTest.pyTestArgs": [
         "Python_tes"
     ],
-    "python.unitTest.unittestEnabled": true,
+    "python.unitTest.unittestEnabled": false,
     "python.unitTest.nosetestsEnabled": false,
     "python.unitTest.pyTestEnabled": false,
     "python.unitTest.unittestArgs": [
@@ -12,5 +12,6 @@
         "-p",
         "*test.py"
     ],
-    "python.linting.pylintEnabled": true
+    "python.linting.pylintEnabled": true,
+    "python.unitTest.promptToConfigure": false
 }
