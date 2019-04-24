@@ -122,5 +122,9 @@ def tan_open(filename):
 
 sarah = tan_open('sarah.txt')
 print(sorted(set([tan_sanitize.tan_sanitize(t) for t in sarah]))[0:3])        
-sarah = tan_open('miss.txt')
-print(sorted(set([tan_sanitize.tan_sanitize(t) for t in sarah]))[0:3])        
+james = tan_open('james.txt')
+print(sorted(set([tan_sanitize.tan_sanitize(t) for t in james]))[0:3])
+julie = tan_open('julie.txt')
+print(sorted(set([tan_sanitize.tan_sanitize(t) for t in julie]))[0:3])
+mikey = tan_open('mikey.txt')
+print(sorted(set([tan_sanitize.tan_sanitize(t) for t in mikey]))[0:3])
