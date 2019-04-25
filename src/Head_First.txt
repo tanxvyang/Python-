@@ -71,6 +71,8 @@ print（”输出函数print”）
                     return(sorted(set([sanitize(t) for t in self]))[0:3])      
 
 
-
+出现没有返回值的情况时 ,首先查看语句块对应的return语句是否一一对应.Python对缩进很敏感
+        并依靠缩进划分语句块
+        并依靠缩进划分语句块
 
 

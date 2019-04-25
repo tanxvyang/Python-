@@ -1,0 +1,64 @@
+#####################缩进的重要性:下面这段代码因为一个缩进而导致崩溃#######################################
+import pickle
+from tan_AthleteList import AthleteList
+
+def get_coach_data(filename):
+    try:
+        with open(filename) as fn:
+            data = fn.readline()
+        templ = data.strip().split(',')
+        #return(Athlete(templ.pop(0),templ.pop(0),templ))
+        return(AthleteList(templ.pop(0),templ.pop(0),templ))
+    except IOError as ioerr:
+        print('datafile error : '+str(ioerr))
+        return(None)
+
+def put_to_store(file_list):
+    all_athletes = {}
+    for each_file in file_list:
+        ath = get_coach_data(each_file)
+        all_athletes[ath.name] = ath
+    try:
+        with open('athletes.pickle','wb') as athf:
+            pickle.dump(all_athletes,athf)
+    except IOError as ioerr:
+        print('File error(put_to_store):'+str(ioerr))
+    return(all_athletes)           #这个return语句用来返回一个字典
+       # return(all_athetes)     #Pyhon中使用缩进来确定语句块,就是因为这个缩进没有在它该对应的位置,从而导致该函数没有返回值
+                                   #由于对应的是上面的IOError语句块,所以只有在except语句执行时它才会返回一个数据
+                                   #
+                                    #以后要注意,一一对应
+
+########################################################3
+
+下面是这个缩进位置不同而导致的不同的结果
+def put_to_store(file_list):
+    all_athletes = {}
+    for each_file in file_list:
+        ath = get_coach_data(each_file)
+        all_athletes[ath.name] = ath
+    try:
+        with open('athletes.pickle','wb') as athf:
+            pickle.dump(all_athletes,athf)
+    except IOError as ioerr:
+        print('File error(put_to_store):'+str(ioerr))
+  <2>return(all_athletes)           #这个return语句用来返回一个字典
+      <1> # return(all_athetes)   
+
+*************************************************
+<1>
+>>> thie_files = ['sarah2.txt','james2.txt','mikey2.txt','julie2.txt']
+>>> data = put_to_store(thie_files)
+>>> data                           #因为没有返回值,所以data也没有值
+
+>>> type(data)                      #查看data的类型,无值类
+<class 'NoneType'>
+>>> 
+============ RESTART: E:\GitHub\Python-\src\day07\athletemodel.py ============
+<2>
+>>> type(data)                          #这时data是一个字典
+<class 'dict'>
+>>> data                             #put_to_store(thie_files)有返回值,是一个字典,并将其赋至data中,
+{'Sarah Sweeney': ['2:58', '2.58', '2:39', '2-25', '2-55', '2:54', '2.18', '2:55', '2:55', '2:22', '2-21', '2.22'], 'James Lee': ['2-34', '3:21', '2.34', '2.45', '3.01', '2:01', '2:01', '3:10', '2-22', '2-01', '2.01', '2:16'], 'Mikey McManus': ['2:22', '3.01', '3:01', '3.02', '3:02', '3.02', '3:22', '2.49', '2:38', '2:40', '2.22', '2-31'], 'Julie Jones': ['2.59', '2.11', '2:11', '2:23', '3-10', '2-23', '3:10', '3.21', '3-21', '3.01', '3.02', '2:59']}
+>>> 
+*************************************************
